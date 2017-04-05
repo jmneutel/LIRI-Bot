@@ -61,6 +61,11 @@ function run() {
 
     } else if (input1 === "spotify-this-song") {
 
+        if (input2.length < 1) {
+
+            input2 = "The Sign Ace of Base";
+        };
+
         spotify.search({ type: 'track', query: input2 }, function(err, data) {
             if (err) {
                 console.log('Error occurred: ' + err);
