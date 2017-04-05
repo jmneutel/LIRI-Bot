@@ -6,8 +6,6 @@ var request = require('request');
 var input1 = process.argv[2];
 var input2 = process.argv.splice(3).join(" ");
 
-
-
 function log() {
 
     fs.appendFile('./log.txt', input1 + " " + input2 + ", ", function(err) {
@@ -82,13 +80,17 @@ function run() {
 
     } else if (input1 === "movie-this") {
 
+        if (input2.length < 1) {
+
+            input2 = "Mr. Nobody";
+        };
+
         // Then run a request to the OMDB API with the movie specified
         request("http://www.omdbapi.com/?t=" + input2 + "&y=&plot=short&r=json&tomatoes=true", function(error, response, body) {
 
             // If the request is successful (i.e. if the response status code is 200)
             if (!error && response.statusCode === 200) {
 
-                // Parse the body of the site and recover just the imdbRating
                 // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
                 // console.log(JSON.parse(body));
                 console.log('');
@@ -107,15 +109,12 @@ function run() {
             } else {
 
                 console.log(error);
-                // ask about how to run it for Mr. Nobody
 
             }
-
 
         });
 
         log();
-
 
     } else if (input1 === "do-what-it-says") {
 
@@ -126,14 +125,12 @@ function run() {
             // console.log(data);
 
             var arr = data.split(',');
-            
+
             input1 = arr[0].trim();
             input2 = arr[1].trim();
             run();
-            // Ask how to use the my-tweets funtion 
+
         });
-
-
 
     }
 };
