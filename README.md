@@ -8,10 +8,10 @@
 
  - Once cd-ing into the LIRI-Bot directory, type in: node liri.js INSERTCOMMAND 
  - List of commands:
- * my-tweets
- * spotify-this-song
- * movie-this
- * do-what-it-says
+  * my-tweets
+  * spotify-this-song
+  * movie-this
+  * do-what-it-says
  - If no song is typed in after the spotify-this-song, a default song will be searched. 
  - If no movie is typed in after the movie-this, a default movie will be searched. 
 
